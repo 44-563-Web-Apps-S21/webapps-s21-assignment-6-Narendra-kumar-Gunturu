@@ -1,39 +1,71 @@
 <!DOCTYPE html>
 <html>
- 
+ <head>
+     <title>Hidden Website</title>
+ </head>
 <body>
 
-<h2>Getting input</h2>
+<h2>Hidden things by Narendra</h2>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <label for="form1_secret">Enter the secret word</label>
+    <input type ="password" id="form1_secret" name="form1_secret" min=10 max=50 step=2 value="Secret"> <br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    <label for="form1_guess">Enter a guess </label>
+    <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <input type="button" onclick="processGuess()" value="Check the guess">
 </form>
 
 
-<p id="result">This text will be replaced </p>
+<p id="result">To check results</p>
 
 <script> 
-
-function resolveForm (){
+var correct = 0;
+var wrong= 0;
+function processGuess(){
     console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    secret = document.getElementById("form1_secret").value
+    guess = document.getElementById("form1_guess").value
+    //confirmed = confirm("Are these the values? "+age+" and "+nick)
     
     out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
+    if(secret == guess){
+        correct+=1;
+        alert("Congratulations");
+        out.innerHTML = "Success Attempts: " + correct
     } else {
-        out.innerHTML = "Values were not confirmed"
+        wrong+=1;
+        alert("Sorry");
+        out.innerHTML = "Wrong Attempts: " + wrong
     }
 }
 </script>
+<div class="container">
+    <img id="myPlant" src="Gardenia.jpg" alt="connection error" width="200" height="200" onclick="rotateImage()">
+</div>
+<script>
+    var currentImage = 0;
+    function rotateImage(){
+        switch(currentImage){
+            case 0: 
+                currentImage+=1;
+                document.getElementById("myPlant").src = "Gardenia.jpg"
+                break;
+            case 1:
+                currentImage+=1;
+                document.getElementById("myPlant").src = "Nasturtium.jpg"
+                break;
+            case 2:
+                currentImage+=1;
+                document.getElementById("myPlant").src = "Talinum.jpg"
+                break;
+            default:
+                currentImage = 0
+                document.getElementById("myPlant").src = "Gardenia.jpg"
+        }
+    }
+</script>
 
 </body>
-</html> 
+</html>
