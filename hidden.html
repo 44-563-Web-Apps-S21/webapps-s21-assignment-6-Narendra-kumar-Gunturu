@@ -20,6 +20,8 @@
 
 <p id="result">This text will be replaced </p>
 
+<img id="plantImage" src="Gardenia.jpg" alt="Acacia image" width="200" height="200" onclick="rotateImage()">
+
 <script> 
 
 function resolveForm (){
@@ -35,6 +37,26 @@ function resolveForm (){
         out.innerHTML = "Values were not confirmed"
     }
 }
+
+var currentImage = 0;
+
+    function rotateImage(){
+        switch(currentImage){
+            case 0: 
+                currentImage++;
+                document.getElementById("plantImage").src = "Nasturtium.jpg"
+                break;
+            case 1:
+                currentImage++;
+                document.getElementById("plantImage").src = "Talinum.jpg"
+                break;
+            case 2:
+                currentImage=0;
+                document.getElementById("plantImage").src = "Gardenia.jpg"
+                break;
+        }
+    }
+
 </script>
 
 </body>
